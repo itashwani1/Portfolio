@@ -56,6 +56,23 @@ function initializeNavbar() {
       }
     });
   }
+
+  // Close mobile menu when a link is clicked
+  const navLinks = document.querySelectorAll('.nav-link-custom');
+  const menuCollapse = document.getElementById('navbarNav');
+  
+  if (menuCollapse && navLinks.length > 0) {
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) { // Only on mobile
+          const bsCollapse = new bootstrap.Collapse(menuCollapse, {
+            toggle: false
+          });
+          bsCollapse.hide();
+        }
+      });
+    });
+  }
 }
 
 function initializeTypingEffect() {
